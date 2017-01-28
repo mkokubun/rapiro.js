@@ -1,8 +1,11 @@
+// rapiro.js 01
 // サーボとLEDの制御
 // Node.js + johnny-five による制御の基礎
 // 　・全サーボを初期状態（直立）にする
 // 　・LEDを適当な色にする
 // 2017.01.28　by Mitsuteru Kokubun
+// 詳しくは以下を参照してください
+// http://qiita.com/mkoku/items/191ead1b62693003bf64
 
 'use strict';                       // 厳格モードにする
 
