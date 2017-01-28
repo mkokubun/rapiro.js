@@ -33,6 +33,7 @@ const MPR121ADDR        = 0x5A;                 // MPR121静電容量タッチ�
 const feelerNum         = 4;                    // タッチセンサのfeelerの数
 const rapiro = {                                // Rapiroの設定や動作等を格納するオブジェクト
     ready:    false,                            // Rapiroの準備状態（初期値false）
+    power:    0,                                // サーボ電源の状態（0:OFF / 1:ON）
     obstacle: false,                            // 障害物の検出状態（初期値false）
     touch:    [0, 0, 0, 0],                     // タッチセンサのタッチ状態（初期値4ch全て0）
     touched:  [0, 0, 0, 0]
@@ -110,8 +111,16 @@ board.on('ready', function() {
         const obj = cfg.motion;                                     // motionオブジェクトを取得
         for (let pname in obj) {                                    // motionオブジェクト中の全プロパティについて検討
             if (pname == motionName) {                              // 指定の動作名のプロパティがあったら
+                if (rapiro.power == 0) {
+                    rapiro.powerSwitch(1);
+                }
                 rapiro.currentMotionName     = pname;               // 現在の動作名をその動作名に設定
                 rapiro.currentMotionSequence = obj[pname];          // 現在の動作シーケンスにその動作を格納
+                if (rapiro.currentMotionSequence.loop == false) {   // 非ループ動作なら終了時に電源OFF（省電力）
+                    rapiro.currentMotionSequence.oncomplete = function () {
+                        rapiro.powerSwitch(0);
+                    }
+                }
                 bodyMotion.enqueue(rapiro.currentMotionSequence);   // 動作アニメーションの開始
                 return;                                             // あとは抜ける
             }
@@ -133,14 +142,18 @@ board.on('ready', function() {
         console.log('Error: unidentified face argument');           // 指定の表情名のプロパティがなかったらエラー表示
     };
 
-    // サーボ電源をON
-    this.pinMode(pinServoDC, five.Pin.OUTPUT);      // 電源供給ピンを出力モードに
-    this.digitalWrite(pinServoDC, 1);               // 電源供給ピンに1を出力
+    // サーボ電源をON/OFFする関数（引数 0:OFF / 1:ON）
+    rapiro.powerSwitch = function(OnOff) {
+        board.pinMode(pinServoDC, five.Pin.OUTPUT); // 電源供給ピンを出力モードに
+        board.digitalWrite(pinServoDC, OnOff);      // 電源供給ピンに1を出力
+        rapiro.power = OnOff;                       // 電源状態の変数を変更
+    }
+
     // 初期状態を作る
+    rapiro.powerSwitch(1);                          // サーボ電源をON
     rapiro.execMotion('stop');                      // 動作をstopに
     rapiro.execFace('white');                       // 表情をwhiteに
-    // Rapiroの準備OK
-    rapiro.ready = true;
+    rapiro.ready = true;                            // Rapiroの準備OK
 
     // デバッグ用：コマンドラインからモーションと表情を制御
     board.repl.inject({
