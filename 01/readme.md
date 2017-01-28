@@ -19,7 +19,7 @@
 pi@raspberrypi:~ $ npm install johnny-five
 ```
 
-- app.js を実行
+- node で app.js を実行
 ```
 pi@raspberrypi:~/01 $ node app.js
 ```
