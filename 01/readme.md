@@ -31,3 +31,6 @@ pi@raspberrypi:~/01 $ node app.js
 ## さらに詳しくは...
 
 [二足歩行ロボット Rapiro を Node.js で制御 [1] サーボとLED制御のテスト @Qiita](http://qiita.com/mkoku/items/191ead1b62693003bf64)
+
+---
+2017.01.28　by Mitsuteru Kokubun

@@ -45,3 +45,6 @@ http://192.168.**.***:3000
 ## さらに詳しくは...
 
 [二足歩行ロボット Rapiro を Node.js で制御 [2] ブラウザからポージング @Qiita](http://qiita.com/mkoku/items/490606b5c70eeb9e5ea3)
+
+---
+2017.01.28　by Mitsuteru Kokubun
