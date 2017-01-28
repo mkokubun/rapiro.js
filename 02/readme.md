@@ -16,10 +16,10 @@
 ### RAPIRO 内の Raspberry Pi で
 
 - app.js と index.html を 任意のディレクトリに置く（e.g. /home/pi/02）
-- npm で johnny-five と socket.io をインストール
+- npm で johnny-five, socket.io, express をインストール
 
 ```
-pi@raspberrypi:~ $ npm install johnny-five socket.io
+pi@raspberrypi:~ $ npm install johnny-five socket.io express
 ```
 
 - node で app.js を実行

@@ -22,10 +22,10 @@ Node.js controlled RAPIRO
 |No.|タイトル|概要|
 |:-:|---|---|
 |05|静電容量タッチセンサの搭載 |拡張用 I2C ピンの利用|
-|06|スピーカーの搭載と音声合成 |VoiceText Web API|
-|07|天気情報をしゃべる        |OpenWeatherMap API|
+|06|スピーカーの搭載と音声合成 |VoiceText Web API の利用|
+|07|天気情報をしゃべる        |OpenWeatherMap API の利用|
 |08|カメラの搭載              |静止画・動画撮影とストリーミング|
-|09|家電の操作               |irMagician-T|
+|09|家電の操作               |irMagician-T の利用|
 |10|引き続き考え中...         | |
 
 
@@ -63,3 +63,4 @@ Node.js controlled RAPIRO
 
 - 2017/01/28
     - rapiro.js リポジトリを新規作成
+    - コンテンツ 01～04 をアップ

@@ -3,6 +3,7 @@
 // Rapiro制御インタフェース
 // Rapiro標準の10モーション実装
 // socket.ioによりブラウザから制御
+// 距離センサ（GP2Y0A21YK）による動作制御
 // 2017.01.28　by Mitsuteru Kokubun
 -->
 <html>
@@ -21,7 +22,11 @@
     <table>
         <!-- Rapiroからのレスポンスを表示する場所 -->
         <tr>
-            <td class='center' colspan='3' id='msg'>motion/face</td>
+            <td class='center' colspan='3' id='msg'>motion / face</td>
+        </tr>
+        <!-- Rapiroの距離センサの値を表示する場所 -->
+        <tr>
+            <td class='center' colspan='3' id='prox'>proximity [cm]</td>
         </tr>
         <tr><td>&nbsp;</td></tr>
         <!-- 操作ボタン -->
@@ -137,7 +142,13 @@
         // Rapiroからのレスポンスの表示
         socket.on('response', function(data) {              // socketでresponseイベントが届いたら
             var msg = document.getElementById('msg');       // div要素を取得
-            msg.innerHTML = data.motion + '/' + data.face;  // 動作と表情を表示
+            msg.innerHTML = data.motion + ' / ' + data.face;  // 動作と表情を表示
+        });
+
+        // Rapiroの距離センサの値の表示
+        socket.on('proximity', function(data) {
+            var prox = document.getElementById('prox');
+            prox.innerHTML = data.distance + ' cm'
         });
 
     </script>
