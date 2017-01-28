@@ -64,3 +64,4 @@ Node.js controlled RAPIRO
 - 2017/01/28
     - rapiro.js リポジトリを新規作成
     - コンテンツ 01～04 をアップ
+    - RAPIRO 用 Arduino IDE ボード定義ファイル "boards.txt" をアップ

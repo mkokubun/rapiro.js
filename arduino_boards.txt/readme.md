@@ -1,19 +1,19 @@
-# rapiro 用 boards.txt
+# RAPIRO 用 Arduino IDE ボード定義ファイル "boards.txt"
 
-RAPIRO には 拡張用のアナログピン A6・A7 があります。
+RAPIRO には 拡張用のアナログピン A6・A7 があり、アナログのセンサを追加できます。
 
 Firmata 経由で RAPIRO 制御する場合、Arduino IDE で StandardFirmataPlus を書き込みますが、通常の "Arduino/Genuino Uno" を選択して書き込むと、A6・A7ピンが使えません。
 
-この boards.txt を使い、Arduino IDE で "Rapiro Control Board" を選択して書く込むことで、A6・A7ピンが使えるようになります。
+この boards.txt を使い、Arduino IDE で "Rapiro Control Board" を選択して書き込むことで、A6・A7ピンが使えるようになります。
 
 ---
 ## 使い方
 
 - この "boards.txt" をダウンロード
-- 以下の場所の "boards.txt" と置き換え（Windows の場合）
-    - {Arduino IDE のインストールディレクトリ}\hardware\arduino\avr
+- 以下の場所の "boards.txt" と置き換える（Windows の場合）
+    - {Arduino IDE のインストールディレクトリ} \hardware\arduino\avr
 - Arduino IDE の [ツール] => [ボード] で "Rapiro Control Board" を選択
-- StandirdFirmataPlus を書き込む
+- StandardFirmataPlus を書き込む
 
 ---
 
