@@ -4,13 +4,14 @@
 // Rapiro標準の10モーション実装
 // socket.ioによりブラウザから制御
 // 距離センサ（GP2Y0A21YK）による動作制御
+// タッチセンサ（Grove I2C MPR121）による動作制御
 // 2017.01.28　by Mitsuteru Kokubun
 -->
 <html>
 <head>
     <meta charset='utf-8'>
     <meta name='viewport' content='width=device-width,initial-scale=1'>
-    <title>rapiro.js 04: 距離センサ</title>
+    <title>rapiro.js 05: タッチセンサ</title>
     <style>
         td.center {text-align: center}
     </style>
@@ -25,6 +26,10 @@
         <!-- Rapiroの距離センサの値を表示する場所 -->
         <tr>
             <td class='center' colspan='3' id='prox'>proximity [cm]</td>
+        </tr>
+        <!-- Rapiroのタッチセンサの値を表示する場所 -->
+        <tr>
+            <td class='center' colspan='3' id='touch'>touch [0, 1, 2, 3]</td>
         </tr>
         <tr><td>&nbsp;</td></tr>
         <!-- 操作ボタン -->
@@ -147,6 +152,12 @@
         socket.on('proximity', function(data) {
             var prox = document.getElementById('prox');
             prox.innerHTML = data.distance + ' cm'
+        });
+
+        // Rapiroのタッチセンサの値の表示
+        socket.on('touch', function(data) {
+            var touch = document.getElementById('touch');
+            touch.innerHTML = data.touch
         });
 
     </script>

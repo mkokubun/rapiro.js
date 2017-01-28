@@ -17,16 +17,18 @@ Node.js controlled RAPIRO
 |[02](https://github.com/mkokubun/rapiro.js/tree/master/02)|ブラウザからポージング |Node.js + johnny-five + socket.io による遠隔制御と監視|
 |[03](https://github.com/mkokubun/rapiro.js/tree/master/03)|10個の基本動作の実装   |RAPIRO 標準の基本動作の移植|
 |[04](https://github.com/mkokubun/rapiro.js/tree/master/04)|距離センサの搭載      |拡張用アナログピンの利用|
+|[05](https://github.com/mkokubun/rapiro.js/tree/master/05)|静電容量タッチセンサの搭載 |拡張用 I2C ピンの利用|
 
 ### 今後の予定
 |No.|タイトル|概要|
 |:-:|---|---|
-|05|静電容量タッチセンサの搭載 |拡張用 I2C ピンの利用|
 |06|スピーカーの搭載と音声合成 |VoiceText Web API の利用|
 |07|天気情報をしゃべる        |OpenWeatherMap API の利用|
-|08|カメラの搭載              |静止画・動画撮影とストリーミング|
-|09|家電の操作               |irMagician-T の利用|
-|10|引き続き考え中...         | |
+|08|家電の操作               |irMagician-T の利用|
+|09|カメラの搭載              |静止画・動画撮影とストリーミング|
+|10|音声認識                 | |
+|11|人工知能？による簡単な会話 | |
+|12|引き続き考え中...         | |
 
 
 ---
@@ -65,5 +67,5 @@ Node.js controlled RAPIRO
 
 - 2017/01/28
     - rapiro.js リポジトリを新規作成
-    - コンテンツ 01～04 をアップ
+    - コンテンツ 01～05 をアップ
     - RAPIRO 用 Arduino IDE ボード定義ファイル "boards.txt" をアップ
