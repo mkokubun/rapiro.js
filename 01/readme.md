@@ -12,7 +12,9 @@
 
 ## 実行方法
 
-- app.js を 任意のディレクトリに置く（e.g. /home/pi/01）
+### RAPIRO 内の Raspberry Pi で
+
+- app.js を任意のディレクトリに置く（e.g. /home/pi/01）
 - npm で johnny-five をインストール
 
 ```

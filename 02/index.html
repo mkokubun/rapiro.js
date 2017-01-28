@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta name='viewport' content='width=device-width,initial-scale=1'>
+    <title>Rapiro Posing Test</title>
+    <style>
+        td.center {text-align: center}
+        td.left   {text-align: left}
+        td.right  {text-align: right}
+    </style>
+</head>
+
+<body>
+    <table>
+        <!-- ポーズ名 -->
+        <tr>
+            <td class='left'>名前</td>
+            <td class='center'><input type='text' size='4' id='txtname' value='testPose'></td>
+            <td class='left'></td>
+            <td class='right'></td>
+            <td class='left'></td>
+        </tr>
+        <!-- ポーズ値 -->
+        <tr>
+            <td class='left'>頭</td>
+            <td class='center'><input type='text' size='4' id='txtheadYaw' value='90'></td>
+            <td class='right'>右</td>
+            <td class='center'><input type='range' id='rngheadYaw' min='0' max='180' value='90'></td>
+            <td class='left'>左</td>
+        </tr>
+        <tr>
+            <td class='left'>腰</td>
+            <td class='center'><input type='text' size='4' id='txtwaistYaw' value='90'></td>
+            <td class='right'>右</td>
+            <td class='center'><input type='range' id='rngwaistYaw' min='0' max='180' value='90'></td>
+            <td class='left'>左</td>
+        </tr>
+        <tr>
+            <td class='left'>右肩</td>
+            <td class='center'><input type='text' size='4' id='txtrightShoulderPitch' value='90'></td>
+            <td class='right'>下</td>
+            <td class='center'><input type='range' id='rngrightShoulderPitch' min='0' max='180' value='0'></td>
+            <td class='left'>上</td>
+        </tr>
+        <tr>
+            <td class='left'>右肩</td>
+            <td class='center'><input type='text' size='4' id='txtrightShoulderRoll' value='90'></td>
+            <td class='right'>開</td>
+            <td class='center'><input type='range' id='rngrightShoulderRoll' min='40' max='130' value='130'></td>
+            <td class='left'>閉</td>
+        </tr>
+        <tr>
+            <td class='left'>右手</td>
+            <td class='center'><input type='text' size='4' id='txtrightHandOpen' value='90'></td>
+            <td class='right'>閉</td>
+            <td class='center'><input type='range' id='rngrightHandOpen' min='70' max='120' value='90'></td>
+            <td class='left'>開</td>
+        </tr>
+        <tr>
+            <td class='left'>左肩</td>
+            <td class='center'><input type='text' size='4' id='txtleftShoulderPitch' value='90'></td>
+            <td class='right'>上</td>
+            <td class='center'><input type='range' id='rngleftShoulderPitch' min='0' max='180' value='180'></td>
+            <td class='left'>下</td>
+        </tr>
+        <tr>
+            <td class='left'>左肩</td>
+            <td class='center'><input type='text' size='4' id='txtleftShoulderRoll' value='90'></td>
+            <td class='right'>閉</td>
+            <td class='center'><input type='range' id='rngleftShoulderRoll' min='40' max='130' value='40'></td>
+            <td class='left'>開</td>
+        </tr>
+        <tr>
+            <td class='left'>左手</td>
+            <td class='center'><input type='text' size='4' id='txtleftHandOpen' value='90'></td>
+            <td class='right'>開</td>
+            <td class='center'><input type='range' id='rngleftHandOpen' min='70' max='120' value='90'></td>
+            <td class='left'>閉</td>
+        </tr>
+        <tr>
+            <td class='left'>右脚</td>
+            <td class='center'><input type='text' size='4' id='txtrightLegYaw' value='90'></td>
+            <td class='right'>内</td>
+            <td class='center'><input type='range' id='rngrightLegYaw' min='0' max='180' value='90'></td>
+            <td class='left'>外</td>
+        </tr>
+        <tr>
+            <td class='left'>右足</td>
+            <td class='center'><input type='text' size='4' id='txtrightFootRoll' value='90'></td>
+            <td class='right'>内</td>
+            <td class='center'><input type='range' id='rngrightFootRoll' min='0' max='180' value='90'></td>
+            <td class='left'>外</td>
+        </tr>
+        <tr>
+            <td class='left'>左脚</td>
+            <td class='center'><input type='text' size='4' id='txtleftLegYaw' value='90'></td>
+            <td class='right'>外</td>
+            <td class='center'><input type='range' id='rngleftLegYaw' min='0' max='180' value='90'></td>
+            <td class='left'>内</td>
+        </tr>
+        <tr>
+            <td class='left'>左足</td>
+            <td class='center'><input type='text' size='4' id='txtleftFootRoll' value='90'></td>
+            <td class='right'>外</td>
+            <td class='center'><input type='range' id='rngleftFootRoll' min='0' max='180' value='90'></td>
+            <td class='left'>内</td>
+        </tr>
+        <!-- LED値 -->
+        <tr>
+            <td class='left'>色R</td>
+            <td class='center'><input type='text' size='4' id='txtR' value='90'></td>
+            <td class='right'>暗</td>
+            <td class='center'><input type='range' id='rngR' min='0' max='255' value='127'></td>
+            <td class='left'>明</td>
+        </tr>
+        <tr>
+            <td class='left'>色G</td>
+            <td class='center'><input type='text' size='4' id='txtG' value='90'></td>
+            <td class='right'>暗</td>
+            <td class='center'><input type='range' id='rngG' min='0' max='255' value='127'></td>
+            <td class='left'>明</td>
+        </tr>
+        <tr>
+            <td class='left'>色B</td>
+            <td class='center'><input type='text' size='4' id='txtB' value='90'></td>
+            <td class='right'>暗</td>
+            <td class='center'><input type='range' id='rngB' min='0' max='255' value='127'></td>
+            <td class='left'>明</td>
+        </tr>
+        <!-- 動作速度 -->
+        <tr>
+            <td class='left'>速度</td>
+            <td class='center'><input type='text' size='4' id='txttimeInMs' value='90'></td>
+            <td class='right'>速</td>
+            <td class='center'><input type='range' id='rngtimeInMs' min='100' max='1000' value='500'></td>
+            <td class='left'>遅</td>
+        </tr>
+    </table>
+    リセットはページをリロードして→<input type='button' id='btnSend' value='リセット'>
+
+    <!-- 双方向通信（socket通信）のためのライブラリの読み込み（定型） -->
+    <script src='/socket.io/socket.io.js'></script>
+
+    <script>
+        // 双方向通信用のサーバに接続
+        var socket = io.connect('http://192.168.43.200:3000');
+
+        // 値の設定と、スライダーで値変更時の処理
+        var rngheadYaw = document.getElementById('rngheadYaw');
+        document.getElementById('txtheadYaw').value = rngheadYaw.value;
+        rngheadYaw.addEventListener('input', function() {
+            document.getElementById('txtheadYaw').value = rngheadYaw.value;
+            sendPose();
+        });
+        var rngwaistYaw = document.getElementById('rngwaistYaw');
+        document.getElementById('txtwaistYaw').value = rngwaistYaw.value;
+        rngwaistYaw.addEventListener('input', function() {
+            document.getElementById('txtwaistYaw').value = rngwaistYaw.value;
+            sendPose();
+        });
+        var rngrightShoulderPitch = document.getElementById('rngrightShoulderPitch');
+        document.getElementById('txtrightShoulderPitch').value = rngrightShoulderPitch.value;
+        rngrightShoulderPitch.addEventListener('input', function() {
+            document.getElementById('txtrightShoulderPitch').value = rngrightShoulderPitch.value;
+            sendPose();
+        });
+        var rngrightShoulderRoll = document.getElementById('rngrightShoulderRoll');
+        document.getElementById('txtrightShoulderRoll').value = rngrightShoulderRoll.value;
+        rngrightShoulderRoll.addEventListener('input', function() {
+            document.getElementById('txtrightShoulderRoll').value = rngrightShoulderRoll.value;
+            sendPose();
+        });
+        var rngrightHandOpen = document.getElementById('rngrightHandOpen');
+        document.getElementById('txtrightHandOpen').value = rngrightHandOpen.value;
+        rngrightHandOpen.addEventListener('input', function() {
+            document.getElementById('txtrightHandOpen').value = rngrightHandOpen.value;
+            sendPose();
+        });
+        var rngleftShoulderPitch = document.getElementById('rngleftShoulderPitch');
+        document.getElementById('txtleftShoulderPitch').value = rngleftShoulderPitch.value;
+        rngleftShoulderPitch.addEventListener('input', function() {
+            document.getElementById('txtleftShoulderPitch').value = rngleftShoulderPitch.value;
+            sendPose();
+        });
+        var rngleftShoulderRoll = document.getElementById('rngleftShoulderRoll');
+        document.getElementById('txtleftShoulderRoll').value = rngleftShoulderRoll.value;
+        rngleftShoulderRoll.addEventListener('input', function() {
+            document.getElementById('txtleftShoulderRoll').value = rngleftShoulderRoll.value;
+            sendPose();
+        });
+        var rngleftHandOpen = document.getElementById('rngleftHandOpen');
+        document.getElementById('txtleftHandOpen').value = rngleftHandOpen.value;
+        rngleftHandOpen.addEventListener('input', function() {
+            document.getElementById('txtleftHandOpen').value = rngleftHandOpen.value;
+            sendPose();
+        });
+        var rngrightLegYaw = document.getElementById('rngrightLegYaw');
+        document.getElementById('txtrightLegYaw').value = rngrightLegYaw.value;
+        rngrightLegYaw.addEventListener('input', function() {
+            document.getElementById('txtrightLegYaw').value = rngrightLegYaw.value;
+            sendPose();
+        });
+        var rngrightFootRoll = document.getElementById('rngrightFootRoll');
+        document.getElementById('txtrightFootRoll').value = rngrightFootRoll.value;
+        rngrightFootRoll.addEventListener('input', function() {
+            document.getElementById('txtrightFootRoll').value = rngrightFootRoll.value;
+            sendPose();
+        });
+        var rngleftLegYaw = document.getElementById('rngleftLegYaw');
+        document.getElementById('txtleftLegYaw').value = rngleftLegYaw.value;
+        rngleftLegYaw.addEventListener('input', function() {
+            document.getElementById('txtleftLegYaw').value = rngleftLegYaw.value;
+            sendPose();
+        });
+        var rngleftFootRoll = document.getElementById('rngleftFootRoll');
+        document.getElementById('txtleftFootRoll').value = rngleftFootRoll.value;
+        rngleftFootRoll.addEventListener('input', function() {
+            document.getElementById('txtleftFootRoll').value = rngleftFootRoll.value;
+            sendPose();
+        });
+        var rngR = document.getElementById('rngR');
+        document.getElementById('txtR').value = rngR.value;
+        rngR.addEventListener('input', function() {
+            document.getElementById('txtR').value = rngR.value;
+            sendPose();
+        });
+        var rngG = document.getElementById('rngG');
+        document.getElementById('txtG').value = rngG.value;
+        rngG.addEventListener('input', function() {
+            document.getElementById('txtG').value = rngG.value;
+            sendPose();
+        });
+        var rngB = document.getElementById('rngB');
+        document.getElementById('txtB').value = rngB.value;
+        rngB.addEventListener('input', function() {
+            document.getElementById('txtB').value = rngB.value;
+            sendPose();
+        });
+        var rngtimeInMs = document.getElementById('rngtimeInMs');
+        document.getElementById('txttimeInMs').value = rngtimeInMs.value;
+        rngtimeInMs.addEventListener('input', function() {
+            document.getElementById('txttimeInMs').value = rngtimeInMs.value;
+            sendPose();
+        });
+
+        function sendPose() {
+            // poseオブジェクト
+            var poseObj = {
+                name: document.getElementById('txtname').value,
+                pose: {
+                    headYaw:               parseInt(rngheadYaw.value),
+                    waistYaw:              parseInt(rngwaistYaw.value),
+                    rightShoulderPitch:    parseInt(rngrightShoulderPitch.value),
+                    rightShoulderRoll:     parseInt(rngrightShoulderRoll.value),
+                    rightHandOpen:         parseInt(rngrightHandOpen.value),
+                    leftShoulderPitch:     parseInt(rngleftShoulderPitch.value),
+                    leftShoulderRoll:      parseInt(rngleftShoulderRoll.value),
+                    leftHandOpen:          parseInt(rngleftHandOpen.value),
+                    rightLegYaw:           parseInt(rngrightLegYaw.value),
+                    rightFootRoll:         parseInt(rngrightFootRoll.value),
+                    leftLegYaw:            parseInt(rngleftLegYaw.value),
+                    leftFootRoll:          parseInt(rngleftFootRoll.value)
+                },
+                led: {
+                    R: parseInt(rngR.value),
+                    G: parseInt(rngG.value),
+                    B: parseInt(rngB.value)
+                },
+                timeInMs: parseInt(rngtimeInMs.value)
+            };
+            console.log(poseObj);
+            socket.emit('pose', poseObj);
+        }
+
+        var btnSend = document.getElementById('btnSend');
+        btnSend.addEventListener('click', sendPose);
+
+    </script>
+</body>
+</html>
