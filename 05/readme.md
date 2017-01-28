@@ -15,7 +15,7 @@
 
 ### RAPIRO 内の Raspberry Pi で
 
-- app.js, index.html, rapiro-cfg.js を 任意のディレクトリに置く（e.g. /home/pi/04）
+- app.js, index.html, rapiro-cfg.js を 任意のディレクトリに置く（e.g. /home/pi/05）
 - npm で johnny-five, socket.io, express をインストール
 
 ```
@@ -24,7 +24,7 @@ pi@raspberrypi:~ $ npm install johnny-five socket.io express
 
 - node で app.js を実行
 ```
-pi@raspberrypi:~/04 $ node app.js
+pi@raspberrypi:~/05 $ node app.js
 ```
 
 ### PC・タブレット・スマートフォンで
