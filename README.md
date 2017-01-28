@@ -55,7 +55,9 @@ Node.js controlled RAPIRO
     - 私はスマートフォンのテザリング（インターネット共有）でまかなっています
 - RAPIRO のメイン基板への Firmata の書き込み
     - [Arduino IDE](https://www.arduino.cc/en/main/software) で StandardFirmataPlus を書き込んでおきます
-    - ただし、普通に "Arduino/Genuino Uno" の設定で書き込むと、RAPIRO に拡張用に備わっているアナログ A6・A7 ピンが使えないため、[こちらの手順](http://qiita.com/mkoku/items/253b7b2869f0baba2fa2)で書き込んでおきます
+    - ただし、普通に "Arduino/Genuino Uno" の設定で書き込むと、RAPIRO に拡張用に備わっているアナログ A6・A7 ピンが使えないため、[この "boards.txt"](https://github.com/mkokubun/rapiro.js/tree/master/arduino_boards.txt)を使い、[こちらの手順](http://qiita.com/mkoku/items/253b7b2869f0baba2fa2)で書き込んでおきます
+- その他
+    - コンテンツ04以降ではさらに、適宜センサ等のパーツが必要です
 
 ---
 
