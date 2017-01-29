@@ -19,7 +19,7 @@
 - app.js, index.html, rapiro-cfg.js を 任意のディレクトリに置く（e.g. /home/pi/06）
 - 3個のwavファイルも同じディレクトリに置く
     - この例では「[効果音ラボ](http://soundeffect-lab.info/)」からダウンロードした音声を利用
-- npm で johnny-five, socket.io, express, voicetext, openweather-apis をインストール
+- npm で [johnny-five](http://johnny-five.io/), [socket.io](http://socket.io/), [express](http://expressjs.com/ja/), [voicetext](https://github.com/pchw/node-voicetext), [openweather-apis](https://github.com/CICCIOSGAMINO/openweather-apis) をインストール
 
 ```
 pi@raspberrypi:~ $ npm install johnny-five socket.io express voicetext openweather-apis
