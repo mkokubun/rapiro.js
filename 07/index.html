@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<!--
+// Rapiro制御インタフェース
+// Rapiro標準の10モーション実装
+// socket.ioによりブラウザから制御
+// 距離センサ（GP2Y0A21YK）による動作制御
+// タッチセンサ（Grove I2C MPR121）による動作制御
+// 時刻と天気を話させる
+// irMagician-T による家電制御と温度表示
+// 2017.01.30　by Mitsuteru Kokubun
+-->
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta name='viewport' content='width=device-width,initial-scale=1'>
+    <title>rapiro.js 05: タッチセンサ</title>
+    <style>
+        td.center {text-align: center}
+        td.right  {text-align: right}
+        td.left   {text-align: left}
+    </style>
+</head>
+
+<body>
+    <table>
+        <!-- Rapiroからのレスポンスを表示する場所 -->
+        <tr>
+            <td class='center' colspan='3' id='msg'>motion / face</td>
+        </tr>
+        <!-- Rapiroの距離センサの値を表示する場所 -->
+        <tr>
+            <td class='center' colspan='3' id='prox'>proximity [cm]</td>
+        </tr>
+        <!-- 07 Rapiroの温度センサの値を表示する場所 -->
+        <tr>
+            <td class='center' colspan='3' id='temp'>temperature [℃]</td>
+        </tr>
+        <!-- Rapiroのタッチセンサの値を表示する場所 -->
+        <tr>
+            <td class='center' colspan='3' id='touch'>touch [0, 1, 2, 3]</td>
+        </tr>
+        <tr><td>&nbsp;</td></tr>
+        <!-- 操作ボタン -->
+        <tr>
+            <td class='center'></td>
+            <td class='center'><input type='button' value='↑' id='btnForward'></td>
+            <td class='center'></td>
+        </tr>
+        <tr>
+            <td class='right'> <input type='button' value='←' id='btnLeft'></td>
+            <td class='center'><input type='button' value='■' id='btnStop'></td>
+            <td class='left'>  <input type='button' value='→' id='btnRight'></td>
+        </tr>
+        <tr>
+            <td class='center'></td>
+            <td class='center'><input type='button' value='↓' id='btnBack'></td>
+            <td class='center'></td>
+        </tr>
+        <tr><td>&nbsp;</td></tr>
+        <tr>
+            <td class='center'><input type='button' value='R' id='btnRed'></td>
+            <td class='center'><input type='button' value='G' id='btnGreen'></td>
+            <td class='center'><input type='button' value='B' id='btnBlue'></td>
+        </tr>
+        <tr>
+            <td class='center'><input type='button' value='Y' id='btnYellow'></td>
+            <td class='center'><input type='button' value='P' id='btnPush'></td>
+            <td class='center'></td>
+        </tr>
+        <tr><td>&nbsp;</td></tr>
+        <!-- 06時刻と天気を話させるボタン -->
+        <tr>
+            <td class='center' colspan='3' id='touch'>
+                <input type='button' value='time' id='btnTime'>
+                <input type='button' value='weather' id='btnWeather'>
+            </td>
+        </tr>
+        <!-- 07赤外線を送信させるボタン -->
+        <tr>
+            <td class='center'><input type='button' value='tvPow' id='btnTvPow'></td>
+            <td class='center'><input type='button' value='acOn' id='btnAcOn'></td>
+            <td class='center'><input type='button' value='acOff' id='btnAcOff'></td>
+        </tr>
+    </table>
+
+    <!-- socket.ioライブラリの読み込み（定型） -->
+    <script src='/socket.io/socket.io.js'></script>
+
+    <!-- メインスクリプト -->
+    <script>
+        var socket = io('http://192.168.43.200:3000');          // socket接続
+
+        // 各ボタンオブジェクトの取得
+        var btnStop    = document.getElementById('btnStop');    // stopボタン
+        var btnForward = document.getElementById('btnForward'); // forwardボタン
+        var btnBack    = document.getElementById('btnBack');    // backボタン
+        var btnRight   = document.getElementById('btnRight');   // rightボタン
+        var btnLeft    = document.getElementById('btnLeft');    // leftボタン
+        var btnGreen   = document.getElementById('btnGreen');   // greenボタン
+        var btnYellow  = document.getElementById('btnYellow');  // yellowボタン
+        var btnBlue    = document.getElementById('btnBlue');    // blueボタン
+        var btnRed     = document.getElementById('btnRed');     // redボタン
+        var btnPush    = document.getElementById('btnPush');    // pushボタン
+        var btnTime    = document.getElementById('btnTime');    // 06時刻ボタン
+        var btnWeather = document.getElementById('btnWeather'); // 06天気ボタン
+        var btnTvPow   = document.getElementById('btnTvPow');   // 07テレビ電源ボタン
+        var btnAcOn    = document.getElementById('btnAcOn');    // 07エアコンONボタン
+        var btnAcOff   = document.getElementById('btnAcOff');   // 07エアコンOFFボタン
+        
+
+        // 各ボタンをクリックした時の処理
+        btnStop.addEventListener('click', function() {      // stop
+            socket.emit('request', {                        // requestイベントをsocketで送る
+                motion: 'stop',                             // 動作名
+                face:   'white'                             // 表情名
+            });
+        });
+        btnForward.addEventListener('click', function() {   // forward
+            socket.emit('request', {
+                motion: 'forward',
+                face:   'blue'
+            });
+        });
+        btnBack.addEventListener('click', function() {      // back
+            socket.emit('request', {
+                motion: 'back',
+                face:   'blue'
+            });
+        });
+        btnRight.addEventListener('click', function() {     // right
+            socket.emit('request', {
+                motion: 'right',
+                face:   'blue'
+            });
+        });
+        btnLeft.addEventListener('click', function() {      // left
+            socket.emit('request', {
+                motion: 'left',
+                face:   'blue'
+            });
+        });
+        btnGreen.addEventListener('click', function() {     // green
+            socket.emit('request', {
+                motion: 'green',
+                face:   'green'
+            });
+        });
+        btnYellow.addEventListener('click', function() {    // yellow
+            socket.emit('request', {
+                motion: 'yellow',
+                face:   'yellow'
+            });
+        });
+        btnBlue.addEventListener('click', function() {      // blue
+            socket.emit('request', {
+                motion: 'blue',
+                face:   'blue'
+            });
+        });
+        btnRed.addEventListener('click', function() {       // red
+            socket.emit('request', {
+                motion: 'red',
+                face:   'red'
+            });
+        });
+        btnPush.addEventListener('click', function() {      // push
+            socket.emit('request', {
+                motion: 'push',
+                face:   'blue'
+            });
+        });
+        btnTime.addEventListener('click', function() {      // 06時刻
+            socket.emit('time');
+        });
+        btnWeather.addEventListener('click', function() {   // 06天気
+            socket.emit('weather');
+        });
+        btnTvPow.addEventListener('click', function() {     // 07テレビの電源
+            socket.emit('ir', {name: 'tvPow'});
+        });
+        btnAcOn.addEventListener('click', function() {      // 07エアコンON
+            socket.emit('ir', {name: 'acOn'});
+        });
+        btnAcOff.addEventListener('click', function() {     // 07エアコンOFF
+            socket.emit('ir', {name: 'acOff'});
+        });
+
+        // Rapiroからのレスポンスの表示
+        socket.on('response', function(data) {              // socketでresponseイベントが届いたら
+            var msg = document.getElementById('msg');       // div要素を取得
+            msg.innerHTML = data.motion + ' / ' + data.face;  // 動作と表情を表示
+        });
+
+        // Rapiroの距離センサの値の表示
+        socket.on('proximity', function(data) {
+            var prox = document.getElementById('prox');
+            prox.innerHTML = Math.round(data.distance) + ' cm'
+        });
+
+        // 07 Rapiroの温度センサの値の表示
+        socket.on('temp', function(data) {
+            var temp = document.getElementById('temp');
+            temp.innerHTML = Math.round(data.temp) + ' ℃';
+        });
+
+        // Rapiroのタッチセンサの値の表示
+        socket.on('touch', function(data) {
+            var touch = document.getElementById('touch');
+            touch.innerHTML = data.touch
+        });
+
+    </script>
+</body>
+</html>

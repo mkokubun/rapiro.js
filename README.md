@@ -19,11 +19,11 @@ Node.js controlled RAPIRO
 |[04](https://github.com/mkokubun/rapiro.js/tree/master/04)| 距離センサの搭載 | 拡張用アナログピンの利用 |
 |[05](https://github.com/mkokubun/rapiro.js/tree/master/05)| 静電容量タッチセンサの搭載 | 拡張用 I2C ピンの利用 |
 |[06](https://github.com/mkokubun/rapiro.js/tree/master/06)| 音声合成と天気予報 | VoiceText / OpenWeatherMap Web API 利用 |
+|[07](https://github.com/mkokubun/rapiro.js/tree/master/07)| 家電の操作 | irMagician-T の利用 |
 
 ### 今後の予定
 |No.|タイトル|概要|
 |:-:|---|---|
-|07|家電の操作               |irMagician-T の利用|
 |08|カメラの搭載              |静止画・動画撮影とストリーミング|
 |09|音声認識                 | |
 |10|人工知能？による簡単な会話 | |
@@ -63,6 +63,9 @@ Node.js controlled RAPIRO
 ---
 
 ## 履歴
+
+- 2017/01/30
+    - コンテンツ 07「家電の操作」をアップ
 
 - 2017/01/29
     - コンテンツ 06「音声合成と天気予報」をアップ
