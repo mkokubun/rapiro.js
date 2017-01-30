@@ -9,7 +9,7 @@
 
 - RAPIRO に設置した赤外線リモコンシステム irMagician-T で家電を操作する
 - irMagician-T に搭載された温度センサの値をブラウザで確認する
-- [04]距離センサ、[05]静電容量タッチセンサ、[6]スピーカー搭載前提
+- [04]距離センサ、[05]静電容量タッチセンサ、[06]スピーカー搭載前提
 
 ## 実行方法
 
@@ -29,7 +29,7 @@ pi@raspberrypi:~ $ npm install johnny-five socket.io express voicetext openweath
 
 - node で app.js を実行
 ```
-pi@raspberrypi:~/06 $ node app.js
+pi@raspberrypi:~/07 $ node app.js
 ```
 
 ### PC・タブレット・スマートフォンで
