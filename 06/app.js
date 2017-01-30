@@ -47,7 +47,7 @@ const rapiro = {                                // Rapiroの設定や動作等�
 
 // 音声合成（VoiceText）の設定
 const VoiceText = require('voicetext');             // voicetextモジュールを使う
-const voice = new VoiceText('tu5vn1y1d9tdttnb');    // VoiceTextのインスタンス（API key）
+const voice = new VoiceText('xxxxxxxxxxxxxxxx');    // VoiceTextのインスタンス（API key）
 
 // 音声ファイル再生のための設定
 const exec  = require('child_process').exec;    // シェルコマンド実行用の子プロセス
@@ -56,7 +56,7 @@ const fs    = require('fs');                    // ファイル入出力
 // 天気情報（OpenWeatherMap）の設定
 const weather = require('openweather-apis');    // openweather-apisモジュールを使う
 const city    = 1856057;                        // 都市ID（http://openweathermap.org/help/city_list.txt）
-weather.setAPPID('762f96ee8e6850730be6aad4a365f33d');   // OpenWeatherMap の API key
+weather.setAPPID('xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx');   // OpenWeatherMap の API key
 
 
 // 制御ボードの準備ができたら

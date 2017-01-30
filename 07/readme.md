@@ -7,19 +7,19 @@
 ---
 ## 簡単な説明
 
-- RAPIRO に設置した赤外線リモコンシステム irMagician-T で家電を操作する
+- RAPIRO に設置した赤外線リモコンシステム [irMagician-T](https://www.switch-science.com/catalog/2151/) で家電を操作する
 - irMagician-T に搭載された温度センサの値をブラウザで確認する
-- [04]距離センサ、[05]静電容量タッチセンサ、[06]スピーカー搭載前提
+- [[04]](https://github.com/mkokubun/rapiro.js/tree/master/04)距離センサ、[[05]](https://github.com/mkokubun/rapiro.js/tree/master/05)静電容量タッチセンサ、[[06]](https://github.com/mkokubun/rapiro.js/tree/master/06)スピーカー搭載前提
 
 ## 実行方法
 
 ### RAPIRO 内の Raspberry Pi で
 
 - app.js, index.html, rapiro-cfg.js を 任意のディレクトリに置く（e.g. /home/pi/07）
-- 3個のwavファイルはその下の/snd/ディレクトリに置く
+- 3個のwavファイルはその下の [/snd/ ディレクトリ](https://github.com/mkokubun/rapiro.js/tree/master/07/snd)に置く
     - この例では「[効果音ラボ](http://soundeffect-lab.info/)」からダウンロードした音声を利用
-- 赤外線情報の入った.jsonファイルはその下の/ir/ディレクトリに置く
-    - irmagician モジュールの作者のページを参考に、事前にファイルを作成
+- 赤外線情報の入った *.json ファイルはその下の [/ir/ ディレクトリ](https://github.com/mkokubun/rapiro.js/tree/master/07/ir)に置く
+    - irmagician モジュール[開発者のページ](http://qiita.com/tamaki/items/f4127249ec211f7d70cd)を参考に、事前にファイルを作成
     - この例では東芝のテレビの電源、富士通のエアコンの電源ON/OFFのファイルを作成して利用    
 - npm で [johnny-five](http://johnny-five.io/), [socket.io](http://socket.io/), [express](http://expressjs.com/ja/), [voicetext](https://github.com/pchw/node-voicetext), [openweather-apis](https://github.com/CICCIOSGAMINO/openweather-apis), [irmagician](https://www.npmjs.com/package/irmagician) をインストール
 
